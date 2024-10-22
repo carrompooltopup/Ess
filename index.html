@@ -259,7 +259,13 @@
         </a>
         <a href="https://wa.me/+8801581050857" target="_blank">
             <button>
-                <img src="https://i.ibb.co/MNDskzJ/2936956.png" alt="Icon 2">
+                <img src="https://i.ibb.co.com/vkp3nbt/notification.gif" alt="Icon 2">
+                Notice 
+            </button>
+        </a>
+        <a href="https://wa.me/+8801581050857" target="_blank">
+            <button>
+                <img src="https://i.ibb.co/MNDskzJ/2936956.png" alt="Icon 3">
                 Live Chat
             </button>
         </a>
@@ -267,41 +273,64 @@
 
     <script>
         let currentAmount = 0;
+let carromUserId = ''; // Carrom User ID সংরক্ষণের জন্য নতুন ভেরিয়েবল
 
-        function showUserIdForm(amount) {
-            currentAmount = amount;
-            document.getElementById('userIdForm').classList.add('active');
-            const products = document.querySelectorAll('.product-list .product');
-            products.forEach(product => {
-                product.style.display = 'none'; // Hide products when form is shown
-            });
-        }
+function showUserIdForm(amount) {
+    currentAmount = amount;
+    document.getElementById('userIdForm').classList.add('active');
+    const products = document.querySelectorAll('.product-list .product');
+    products.forEach(product => {
+        product.style.display = 'none'; // Hide products when form is shown
+    });
+}
 
-        function submitUserId() {
-            const userId = document.getElementById('userIdInput').value;
-            if (userId) {
-                document.getElementById('userIdForm').classList.remove('active');
-                document.getElementById('paymentForm').classList.add('active');
-                document.getElementById('amountText').innerText = `আপনার মোট পরিমাণ: ${currentAmount} BDT`;
-            } else {
-                alert("অনুগ্রহ করে একটি ইউজার আইডি লিখুন।");
-            }
+function submitUserId() {
+    carromUserId = document.getElementById('userIdInput').value; // Carrom User ID সংরক্ষণ
+    if (carromUserId) {
+        document.getElementById('userIdForm').classList.remove('active');
+        document.getElementById('paymentForm').classList.add('active');
+        document.getElementById('amountText').innerText = `আপনার মোট পরিমাণ: ${currentAmount} BDT`;
+    } else {
+        alert("অনুগ্রহ করে একটি ইউজার আইডি লিখুন।");
+    }
+}
+
+function verifyPayment() {
+    const transactionId = document.getElementById('transactionId').value;
+    if (transactionId) {
+        if (transactionId === 'BJL5M3KFCN') {
+            alert(`প্রিয়,${carromUserId} আপনি প্রডাক্ট টি পেয়েছেন আপনার আইডি চেক করুন`); // Carrom User ID সহ মেসেজ প্রদর্শন
+        } else {
+            alert("দুঃখিত, আপনার দেওয়া ট্রানজেকশন আইডি সঠিক নয় !");
         }
+        document.getElementById('paymentForm').classList.remove('active');
+        const products = document.querySelectorAll('.product-list .product');
+        products.forEach(product => {
+            product.style.display = 'block'; // Show products again
+        });
+    } else {
+        alert("অনুগ্রহ করে একটি ট্রানজেকশন আইডি লিখুন।");
+    }
+}
+
 
         function verifyPayment() {
-            const transactionId = document.getElementById('transactionId').value;
-            if (transactionId) {
-                // Payment verification logic can be added here
-                alert("পেমেন্ট সফলভাবে যাচাই করা হয়েছে!");
-                document.getElementById('paymentForm').classList.remove('active');
-                const products = document.querySelectorAll('.product-list .product');
-                products.forEach(product => {
-                    product.style.display = 'block'; // Show products again
-                });
-            } else {
-                alert("অনুগ্রহ করে একটি ট্রানজেকশন আইডি লিখুন।");
-            }
+    const transactionId = document.getElementById('transactionId').value;
+    if (transactionId) {
+        if (transactionId === 'BJMMKPX1') {
+            alert(`${carromUserId} ←এই আইডিতে আপনার প্রডাক্ট পেয়েগেছেন দয়া করে চেক করে দেখুন`); // Carrom User ID সহ মেসেজ প্রদর্শন
+        } else {
+            alert("দুঃখিত, আপনার দেওয়া ট্রানজেকশন আইডি সঠিক নয় !");
         }
+        document.getElementById('paymentForm').classList.remove('active');
+        const products = document.querySelectorAll('.product-list .product');
+        products.forEach(product => {
+            product.style.display = 'block'; // Show products again
+        });
+    } else {
+        alert("অনুগ্রহ করে একটি ট্রানজেকশন আইডি লিখুন।");
+    }
+}
 
         function copyNumber() {
             const number = "01581050857";
