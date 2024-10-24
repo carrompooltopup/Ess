@@ -235,6 +235,8 @@
             <h3>১.৫ কোটি কয়েন🪙</h3>
            <div style="font-family: Arial, sans-serif; text-decoration: line-through; font-size: 12px;">৳ ৪৫০</div> <p> Price: 121 BDT</p>
             <button class="button buy-now" onclick="showUserIdForm(121)">Buy Now</button>
+            <div class="stock-info" id="stock-info">স্টক বাকি আছে: 20</div>
+            
         </div>
     </div>
 
@@ -288,7 +290,24 @@
     </div>
 
     <script>
-        let currentAmount = 0;
+        let stock = 20; // স্টক সংখ্যা
+const stockInfo = document.getElementById('stock-info');
+
+// 9 সেকেন্ড পর পর স্টক কমানোর ফাংশন
+function decreaseStock() {
+    if (stock > 0) {
+        stock--;
+        stockInfo.textContent = `স্টক বাকি আছে: ${stock}`;
+    } else {
+        stockInfo.textContent = 'স্টক শেষ!';
+        clearInterval(stockInterval); // স্টক শেষ হলে টাইমার বন্ধ করবে
+    }
+}
+
+// প্রতি 9 সেকেন্ড পর পর decreaseStock ফাংশন চালানো
+const stockInterval = setInterval(decreaseStock, 9000);
+
+let currentAmount = 0;
 let carromUserId = ''; // Carrom User ID সংরক্ষণের জন্য নতুন ভেরিয়েবল
 
 function showUserIdForm(amount) {
@@ -315,7 +334,7 @@ function verifyPayment() {
     const transactionId = document.getElementById('transactionId').value;
     if (transactionId) {
         if (transactionId === 'BJN0NXU2JS') {
-            alert(`প্রিয়,${carromUserId} আপনি প্রডাক্ট টি পেয়েছেন আপনার আইডি চেক করুন`); // Carrom User ID সহ মেসেজ প্রদর্শন
+            alert(`প্রিয়, ${carromUserId} আপনি প্রডাক্ট টি পেয়েছেন আপনার আইডি চেক করুন`); // Carrom User ID সহ মেসেজ প্রদর্শন
         } else {
             alert("দুঃখিত, আপনার দেওয়া ট্রানজেকশন আইডি সঠিক নয় !");
         }
@@ -329,44 +348,19 @@ function verifyPayment() {
     }
 }
 
-
-        function verifyPayment() {
-    const transactionId = document.getElementById('transactionId').value;
-    if (transactionId) {
-        if (transactionId === 'BJN0NXU2JS') {
-            alert(`${carromUserId} ←দুঃখিত, এটি ব্যবহৃত হয়েছে`); // Carrom User ID সহ মেসেজ প্রদর্শন
-        } else {
-            alert("দুঃখিত, আপনার দেওয়া ট্রানজেকশন আইডি সঠিক নয় !");
-        }
-        document.getElementById('paymentForm').classList.remove('active');
+function goBack(formId) {
+    if (formId === 'userIdForm') {
+        document.getElementById('userIdForm').classList.remove('active');
         const products = document.querySelectorAll('.product-list .product');
         products.forEach(product => {
             product.style.display = 'block'; // Show products again
         });
-    } else {
-        alert("অনুগ্রহ করে একটি ট্রানজেকশন আইডি লিখুন।");
+    } else if (formId === 'paymentForm') {
+        document.getElementById('paymentForm').classList.remove('active');
+        document.getElementById('userIdForm').classList.add('active'); // Show user ID form again
     }
 }
 
-        function copyNumber() {
-            const number = "01581050857";
-            navigator.clipboard.writeText(number).then(() => {
-                alert("নম্বর কপি করা হয়েছে: " + number);
-            });
-        }
-
-        function goBack(formId) {
-            if (formId === 'userIdForm') {
-                document.getElementById('userIdForm').classList.remove('active');
-                const products = document.querySelectorAll('.product-list .product');
-                products.forEach(product => {
-                    product.style.display = 'block'; // Show products again
-                });
-            } else if (formId === 'paymentForm') {
-                document.getElementById('paymentForm').classList.remove('active');
-                document.getElementById('userIdForm').classList.add('active'); // Show user ID form again
-            }
-        }
     </script>
 
 </body>
