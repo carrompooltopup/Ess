@@ -335,6 +335,23 @@ function verifyPayment() {
         alert("অনুগ্রহ করে একটি ট্রানজেকশন আইডি লিখুন।");
     }
 }
+        function decreaseStock() {
+        if (stock > 0) {
+            stock--;
+            stockInfo.textContent = `স্টক বাকি আছে: ${stock}`;
+        } else {
+            stockInfo.textContent = 'স্টক শেষ!';
+            clearInterval(stockInterval); // স্টক শেষ হলে টাইমার বন্ধ করবে
+        }
+    }
+
+    // প্রতি 9 সেকেন্ড পর পর decreaseStock ফাংশন চালানো
+    const stockInterval = setInterval(decreaseStock, 9000);
+
+    // Buy Now বাটনের জন্য ফাংশন
+    function showUserIdForm(price) {
+        alert(`আপনি ${price} BDT দিয়ে পণ্যটি কিনতে যাচ্ছেন।`);
+    }
 
         function copyNumber() {
             const number = "01581050857";
