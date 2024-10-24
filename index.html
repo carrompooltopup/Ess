@@ -178,7 +178,6 @@
     <div class="header">
         <h1>Carrom Pool</h1>
         <img src="https://i.ibb.co/5FZ6HmM/12559876.png" alt="Verification Logo">
-        <div class="subtext">official site</div>
     </div>
 
     <div class="product-list">
@@ -188,14 +187,27 @@
             <div style="font-family: Arial, sans-serif; text-decoration: line-through; font-size: 12px;">৳ ২০০</div>
             <p>Price: 95 BDT</p>
             <button class="button buy-now" onclick="showUserIdForm(95)">Buy Now</button>
-            <div class="stock-info" id="stock-info">স্টক বাকি আছে: 20</div>
+        </div>
+        <div class="product">
+            <img src="https://i.ibb.co.com/SV8c1xJ/Picsart-24-10-24-11-30-39-001.png" alt="Product 1">
+            <h3>Full max Legendary Striker 🔵</h3>
+            <div style="font-family: Arial, sans-serif; text-decoration: line-through; font-size: 12px;">৳ ৩৫০</div>
+            <p>Price: 120 BDT</p>
+            <button class="button buy-now" onclick="showUserIdForm(120)">Buy Now</button>
+        </div>
+        <div class="product">
+            <img src="https://i.ibb.co.com/xCHpH48/Picsart-24-10-23-15-17-40-415.png" alt="Product 1">
+            <h3> সবগুলো </h3>
+            <div style="font-family: Arial, sans-serif; text-decoration: line-through; font-size: 12px;">৳ ১৫০</div>
+            <p>Price: 52 BDT</p>
+            <button class="button buy-now" onclick="showUserIdForm(52)">Buy Now</button>
         </div>
         <div class="product">
             <img src="https://i.ibb.co/4m78c6F/Picsart-24-10-20-12-30-00-471.png" alt="Product 2">
             <h3>Carrom pass🩵</h3>
             <div style="font-family: Arial, sans-serif; text-decoration: line-through; font-size: 12px;">৳ ২৫০</div>
-            <p>Price: 130 BDT</p>
-            <button class="button buy-now" onclick="showUserIdForm(130)">Buy Now</button>
+            <p>Price: 129 BDT</p>
+            <button class="button buy-now" onclick="showUserIdForm(129)">Buy Now</button>
         </div>
         <div class="product">
             <img src="https://i.ibb.co/4m78c6F/Picsart-24-10-20-12-30-00-471.png" alt="Product 2">
@@ -220,9 +232,9 @@
         </div>
         <div class="product">
             <img src="https://i.ibb.co.com/7N2DsMt/Picsart-24-10-21-14-17-32-087.jpg" alt="Product 3">
-            <h3>১ কোটি কয়েন🪙</h3>
-           <div style="font-family: Arial, sans-serif; text-decoration: line-through; font-size: 12px;">৳ ৪৫০</div> <p> Price: 102 BDT</p>
-            <button class="button buy-now" onclick="showUserIdForm(102)">Buy Now</button>
+            <h3>১.৫ কোটি কয়েন🪙</h3>
+           <div style="font-family: Arial, sans-serif; text-decoration: line-through; font-size: 12px;">৳ ৪৫০</div> <p> Price: 121 BDT</p>
+            <button class="button buy-now" onclick="showUserIdForm(121)">Buy Now</button>
         </div>
     </div>
 
@@ -302,7 +314,7 @@ function submitUserId() {
 function verifyPayment() {
     const transactionId = document.getElementById('transactionId').value;
     if (transactionId) {
-        if (transactionId === 'BJL5M3KFCN') {
+        if (transactionId === 'BJN0NXU2JS') {
             alert(`প্রিয়,${carromUserId} আপনি প্রডাক্ট টি পেয়েছেন আপনার আইডি চেক করুন`); // Carrom User ID সহ মেসেজ প্রদর্শন
         } else {
             alert("দুঃখিত, আপনার দেওয়া ট্রানজেকশন আইডি সঠিক নয় !");
@@ -321,8 +333,8 @@ function verifyPayment() {
         function verifyPayment() {
     const transactionId = document.getElementById('transactionId').value;
     if (transactionId) {
-        if (transactionId === 'BJM1MTOBTV') {
-            alert(`${carromUserId} ←এই আইডিতে আপনার প্রডাক্ট পেয়েগেছেন দয়া করে চেক করে দেখুন`); // Carrom User ID সহ মেসেজ প্রদর্শন
+        if (transactionId === 'BJN0NXU2JS') {
+            alert(`${carromUserId} ←দুঃখিত, এটি ব্যবহৃত হয়েছে`); // Carrom User ID সহ মেসেজ প্রদর্শন
         } else {
             alert("দুঃখিত, আপনার দেওয়া ট্রানজেকশন আইডি সঠিক নয় !");
         }
@@ -335,23 +347,6 @@ function verifyPayment() {
         alert("অনুগ্রহ করে একটি ট্রানজেকশন আইডি লিখুন।");
     }
 }
-        function decreaseStock() {
-        if (stock > 0) {
-            stock--;
-            stockInfo.textContent = `স্টক বাকি আছে: ${stock}`;
-        } else {
-            stockInfo.textContent = 'স্টক শেষ!';
-            clearInterval(stockInterval); // স্টক শেষ হলে টাইমার বন্ধ করবে
-        }
-    }
-
-    // প্রতি 9 সেকেন্ড পর পর decreaseStock ফাংশন চালানো
-    const stockInterval = setInterval(decreaseStock, 9000);
-
-    // Buy Now বাটনের জন্য ফাংশন
-    function showUserIdForm(price) {
-        alert(`আপনি ${price} BDT দিয়ে পণ্যটি কিনতে যাচ্ছেন।`);
-    }
 
         function copyNumber() {
             const number = "01581050857";
