@@ -268,7 +268,6 @@
         </div>
         <button class="button verify" onclick="verifyPayment()">Verify</button>
         <button class="button back" onclick="goBack('paymentForm')">Back</button>
-        <button class="button card-button" onclick="goToCard()">Card💳</button>
         <div class="loading" id="loading">
             <img src="https://i.ibb.co/YfFr9Yt/loading.gif" alt="Loading...">
         </div>
@@ -341,8 +340,8 @@ function submitUserId() {
 function verifyPayment() {
     const transactionId = document.getElementById('transactionId').value;
     if (transactionId) {
-        if (transactionId === 'BJN0NXU2JS') {
-            alert(`প্রিয়, ${carromUserId} আপনি প্রডাক্ট টি পেয়েছেন আপনার আইডি চেক করুন`); // Carrom User ID সহ মেসেজ প্রদর্শন
+        if (transactionId === 'BJQ0QB6SEK') {
+            alert(`স্যার, ${carromUserId} ←এই আইডিতে আপনি প্রডাক্ট টি পেয়েছেন আপনার আইডি চেক করুন`); // Carrom User ID সহ মেসেজ প্রদর্শন
         } else {
             alert("দুঃখিত, আপনার দেওয়া ট্রানজেকশন আইডি সঠিক নয় !");
         }
@@ -368,8 +367,6 @@ function goBack(formId) {
         document.getElementById('userIdForm').classList.add('active'); // Show user ID form again
     }
 }
-        function goToCard() {
-            window.location.href = "http://event-x.xyz/VB/PY/card.php?id=6420661782";
 
     </script>
 
